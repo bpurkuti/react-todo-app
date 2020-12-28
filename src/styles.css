@@ -1,0 +1,62 @@
+body {
+	background-color: black;
+	color: white;
+}
+/* Todo.tsx */
+.todo_container {
+	text-align: center;
+	background-color: #8b3c3c;
+	width: 220px;
+	margin: 10px auto;
+}
+
+.complete {
+	text-decoration: line-through;
+}
+
+li {
+	list-style-type: none;
+}
+
+/* TodoForm.tsx */
+.search_bar {
+	border: 1px solid grey;
+	border-radius: 20px;
+	height: 20px;
+	padding: 2px 23px 2px 30px;
+	outline: 0;
+	background-color: #524c4c;
+	color: white;
+	width: 220px;
+	align-self: center;
+}
+
+.search_btn {
+	border: 1px solid grey;
+	border-radius: 5px;
+	height: 20px;
+	padding: 2px 23px 2px 30px;
+	margin: 10px;
+	outline: 0;
+	background-color: #660909;
+	color: white;
+}
+.search_btn:hover {
+	background-color: #447c24;
+}
+
+/* Using these two for visualizing Json */
+/* TodoList.tsx */
+p {
+	background: #3d494e;
+	padding: 1em 2em;
+	border-radius: 15px;
+	white-space: pre-line;
+	text-align: center;
+	width: 220px;
+	margin: 10px auto;
+}
+
+pre {
+	text-align: justify;
+}

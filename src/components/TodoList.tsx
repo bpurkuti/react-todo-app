@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import './TodoList.css';
+import '../styles.css';
 import TodoForm from './TodoForm'
 import initialTodos from '../Data/initialTodos.json';
+import Todo from './Todo';
 /* 
 1. Add Todo
 2, Display Todo
@@ -27,18 +28,44 @@ const TodoList = () => {
             return;
         }
         const newTodo = { text, id, completed };
-        // const tempArr = todos;
-        // tempArr.push(newTodo);
-        // setTodos(tempArr);
-
         setTodos((prevState) => [newTodo, ...prevState]);
+
+    }
+
+    const toggleComplete = (id: string) => {
+        setTodos((prevState) =>
+            prevState.map(todo => {
+                if (todo.id === id) {
+                    return {
+                        //Same as 
+                        // text: todo.text,
+                        // id: todo.id,
+                        // completed: !todo.completed
+                        ...todo, completed: !todo.completed
+
+
+                    };
+                }
+                else {
+                    return todo;
+                }
+            })
+        );
 
     }
 
     return (
         <div>
             <TodoForm addTodo={addTodo} />
-            <pre>{JSON.stringify(todos, null, 2)} </pre>
+
+            {todos.map(todo =>
+                <Todo key={todo.id} id={todo.id} completed={todo.completed} toggleComplete={toggleComplete} text={todo.text} />
+            )}
+
+
+            <p id="json"><pre> {JSON.stringify(todos, null, 2)} </pre></p>
+
+
 
         </div>
 

@@ -8,3 +8,4 @@ interface initialTodos {
 
 
 type AddTodo = (text: string,  id:string, completed: boolean) => void;
+type ToggleComplete = (id:string) => return;
