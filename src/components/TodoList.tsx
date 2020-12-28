@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-
+import './TodoList.css';
+import TodoForm from './TodoForm'
+import initialTodos from '../Data/initialTodos.json';
 /* 
 1. Add Todo
 2, Display Todo
@@ -16,39 +18,27 @@ import React, { useState } from 'react'
 //     target: HTMLFormElement;
 // }
 
+
 const TodoList = () => {
-    const [todo, setTodo] = useState("");
-    const [arr, setArr] = useState<string[]>([]);
+    const [todos, setTodos] = useState(initialTodos);
 
+    const addTodo = (text: string, id: string, completed: boolean) => {
+        if (!text.length) {
+            return;
+        }
+        const newTodo = { text, id, completed };
+        // const tempArr = todos;
+        // tempArr.push(newTodo);
+        // setTodos(tempArr);
 
-    // const handleTodo = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    //     if (event.key === "Enter") {
-    //         setTodo("");
-    //     }
-    // }
+        setTodos((prevState) => [newTodo, ...prevState]);
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        console.log(todo);
-
-        let tempArr = arr;
-        tempArr.push(todo);
-        setArr(tempArr);
-
-        setTodo("");
     }
-
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <input className="search_bar" type='text' placeholder="Your Todos" value={todo} onChange={e => setTodo(e.target.value)} />
-                <p> {arr.map(x => <div>
-                    {x}
-                </div>)}</p>
-            </form>
-
-
+            <TodoForm addTodo={addTodo} />
+            <pre>{JSON.stringify(todos, null, 2)} </pre>
 
         </div>
 
