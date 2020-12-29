@@ -1,4 +1,4 @@
-## Projected Features
+## Features
 
 1. Add Todo
 2. Display Todo
