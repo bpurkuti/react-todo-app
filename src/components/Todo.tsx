@@ -1,5 +1,9 @@
 import React from "react";
 
+// ToggleComplete, HandleRemove, and other functions are defined in react-app-env.d.ts which has global scope
+// We define the type of these parameter before assigning them 
+// TypeScript won't know their type unless as its from different component
+
 interface Props {
     text: string
     id: string
