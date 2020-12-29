@@ -18,8 +18,8 @@ const Todo: React.FC<Props> = (Props) => {
                 <li className={Props.completed ? ("complete") : ("")} onClick={() => Props.toggleComplete(Props.id)} >
                     {Props.text}
                 </li>
-                <button onClick={() => Props.toggleComplete(Props.id)}> Complete</button>
-                <button onClick={() => Props.handleRemove(Props.id)}> Remove </button>
+                <button className="todo_btns" onClick={() => Props.toggleComplete(Props.id)}> Complete</button>
+                <button className="todo_btns" onClick={() => Props.handleRemove(Props.id)}> Remove </button>
             </div>
 
 

@@ -42,41 +42,42 @@ const TodoList = () => {
     }
 
     const completeAll = () => {
-
+        todos.map(todo => (todo.completed) ? ("") : toggleComplete(todo.id));
 
     }
 
     const handleRemove = (id: string) => {
-        setTodos((prevState) =>
-            prevState.map(todo => {
-                if (todo.id === id) {
-                    return {
-                        //Same as 
-                        // text: todo.text,
-                        // id: todo.id,
-                        // completed: !todo.completed
-                        ...todo, completed: !todo.completed
-                    };
-                }
-                else {
-                    return todo;
-                }
-            })
-        );
+        //todo..
+        setTodos((prevState) => prevState.filter(todo => todo.id !== id));
 
+    }
+
+    const removeAllCompleted = () => {
+        //todo..
+        todos.map(todo => (todo.completed) ? (handleRemove(todo.id)) : (""))
     }
 
     return (
         <div>
             <TodoForm addTodo={addTodo} />
 
-            <div> Todos Left: {todos.filter(todo => !todo.completed).length} </div>
+            <div className="filter_name"> Todos Left: {todos.filter(todo => !todo.completed).length} </div>
 
-            <button onClick={() => setFilter("Show All")}> Show All </button>
-            <button onClick={() => setFilter("Show Active")}> Show Active </button>
-            <button onClick={() => setFilter("Show Complete")}> Show Completed </button>
+            <div className='btns_1'>
+                <button onClick={() => setFilter("Show All")}> Show All </button>
+                <button onClick={() => setFilter("Show Active")}> Show Active </button>
+                <button onClick={() => setFilter("Show Complete")}> Show Completed </button>
+            </div>
 
-            <h4> Filter: {filter}</h4>
+            <div className="btns_2">
+                {(todos.length > 0) ? (<button onClick={completeAll}> Complete All </button>) : ("")}
+
+                {(todos.filter(todo => todo.completed).length > 0) ? (<button onClick={removeAllCompleted}> Remove Completed </button>) : ("")}
+
+
+            </div>
+
+            <h4 className="filter_name"> Filter: {filter}</h4>
 
             {filter === "Show All" ?
                 (todos.map(todo =>
@@ -88,7 +89,7 @@ const TodoList = () => {
                         handleRemove={handleRemove}
                         text={todo.text} />
                 )) :
-                (filter == "Show Active" ?
+                (filter === "Show Active" ?
                     (todos.filter(todo => !todo.completed).map(todo =>
                         <Todo
                             key={todo.id}
@@ -113,14 +114,14 @@ const TodoList = () => {
 
             <div>
                 Json Representation
-                <input type="checkbox" onClick={() => setToggleJson(!toggleJson)} checked={toggleJson} />
+                <input type="checkbox" onClick={() => setToggleJson(!toggleJson)} checked={toggleJson} defaultChecked />
             </div>
 
             {toggleJson ? (<div className="show_json">
 
                 {filter === "Show All" ?
                     (<p id="json"><pre> {JSON.stringify(todos, null, 2)} </pre></p>) :
-                    (filter == "Show Active" ?
+                    (filter === "Show Active" ?
                         (
                             <p id="json"><pre> {JSON.stringify(todos.filter(todo => !todo.completed), null, 2)} </pre></p>
                         ) :

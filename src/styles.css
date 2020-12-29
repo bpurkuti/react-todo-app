@@ -5,13 +5,20 @@ body {
 /* Todo.tsx */
 .todo_container {
 	text-align: center;
-	background-color: #8b3c3c;
+	background-color: #4a3ad3;
 	width: 220px;
 	margin: 10px auto;
+	border-radius: 5px;
+}
+
+.todo_container .todo_btns {
+	border-radius: 15px;
 }
 
 .complete {
 	text-decoration: line-through;
+	text-decoration-color: darkred;
+	text-decoration-style: double;
 }
 
 li {
@@ -48,6 +55,29 @@ li {
 
 /* Using these two for visualizing Json */
 /* TodoList.tsx */
+.btns_1 button {
+	border-radius: 15px;
+	outline-color: #447c24;
+	margin: 3px;
+}
+
+.btns_2 button {
+	border-radius: 15px;
+	outline-color: #447c24;
+	margin: 5px;
+}
+.btns_1 button:hover {
+	background-color: #ce1b1b;
+}
+
+.btns_2 button:hover {
+	background-color: #ce1b1b;
+}
+
+.filter_name {
+	color: #ce1b1b;
+}
+
 p {
 	background: #3d494e;
 	padding: 1em 2em;
