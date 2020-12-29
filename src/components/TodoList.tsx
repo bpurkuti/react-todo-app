@@ -10,7 +10,7 @@ import Todo from './Todo';
 const TodoList = () => {
     const [todos, setTodos] = useState(initialTodos);
     const [filter, setFilter] = useState('Show All');
-    const [toggleJson, setToggleJson] = useState(true);
+    const [toggleJson, setToggleJson] = useState(false);
 
     const addTodo = (text: string, id: string, completed: boolean) => {
         if (!text.length) {
@@ -59,6 +59,10 @@ const TodoList = () => {
 
     return (
         <div>
+
+            <h3>
+                Add your shopping list, reminders and rest of the things to do in one neat place
+            </h3>
             <TodoForm addTodo={addTodo} />
 
             <div className="filter_name"> Todos Left: {todos.filter(todo => !todo.completed).length} </div>
